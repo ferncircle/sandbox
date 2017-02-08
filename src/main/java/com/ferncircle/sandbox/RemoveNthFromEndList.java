@@ -7,13 +7,31 @@ package com.ferncircle.sandbox;
  *     ListNode next;
  *     ListNode(int x) { val = x; }
  * }
+ * 
+ * Given linked list: 1->2->3->4->5, and n = 2.
+
+   After removing the second node from the end, the linked list becomes 1->2->3->5.
  */
 public class RemoveNthFromEndList {
 
-	/*public ListNode removeNthFromEnd(ListNode head, int n) {
+	public ListNode removeNthFromEnd(ListNode head, int n) {
 
-		return null;
-	}*/
+		ListNode result = head;
+		ListNode prev = head;
+		int delFlag = 0;
+		while(head.next != null){
+			head = head.next;
+			
+			if(delFlag >= n){
+				result = prev;
+				prev = prev.next;
+			}
+		}
+		
+		result.next = prev.next;
+		
+		return result;
+	}
 
 
 }
