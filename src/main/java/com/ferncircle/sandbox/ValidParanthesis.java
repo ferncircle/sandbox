@@ -1,5 +1,8 @@
 package com.ferncircle.sandbox;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashMap;
@@ -62,6 +65,8 @@ public class ValidParanthesis {
 		Assert.assertTrue(vp.isValid("()"));
 		Assert.assertTrue(vp.isValid("()[]{}"));
 		Assert.assertTrue(vp.isValid("([])"));
+		
+		assertThat(new ValidParanthesis().isValid("()[]{}"), is(true));
 		
 		
 		System.out.println("Test successful");

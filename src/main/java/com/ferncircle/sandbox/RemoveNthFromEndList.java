@@ -1,12 +1,11 @@
 package com.ferncircle.sandbox;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
 /**
  * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
+ * 
  * 
  * Given linked list: 1->2->3->4->5, and n = 2.
 
@@ -33,10 +32,28 @@ public class RemoveNthFromEndList {
 		return result;
 	}
 	
+	public static void main(String[] args) {
+		
+		ListNode _1=new ListNode(1);
+		ListNode _2=new ListNode(2);
+		ListNode _3=new ListNode(3);
+		ListNode _4=new ListNode(4);
+		ListNode _5=new ListNode(5);
+		
+		ListNode head=_1;
+		_1.next=_2;_2.next=_3;_3.next=_4;_4.next=_5;
+		
+		RemoveNthFromEndList test=new RemoveNthFromEndList();
+		
+		assertThat(test.removeNthFromEnd(head, 10).next.next.val, is(3));
+		assertThat(test.removeNthFromEnd(head, 3).next.next.val, is(4));
+		assertThat(test.removeNthFromEnd(head, 3).next.next.val, is(5));
+		
+		System.out.println("All test successful");
+	}
 	
 	
-	
-	public class ListNode {
+	public static class ListNode {
 		      int val;
 		      ListNode next;
 		      ListNode(int x) { val = x; }
