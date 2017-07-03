@@ -15,6 +15,7 @@ public class Link {
 	//Print Link data
 	public void printLink() {
 		System.out.print("{" + data1 + ", " + data2 + "} ");
+		
 	}
 
 }
