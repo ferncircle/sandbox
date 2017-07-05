@@ -1,5 +1,6 @@
 package com.ferncircle.ds.linkedlist;
 
+//this is a Link class.
 public class Link {
 
 	public int data1;
