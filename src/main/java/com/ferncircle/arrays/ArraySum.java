@@ -1,4 +1,4 @@
-package com.ferncircle.sandbox;
+package com.ferncircle.arrays;
 
 import java.util.Arrays;
 import java.util.HashMap;

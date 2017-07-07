@@ -1,4 +1,4 @@
-package com.ferncircle.sandbox;
+package com.ferncircle.string;
 
 import junit.framework.Assert;
 

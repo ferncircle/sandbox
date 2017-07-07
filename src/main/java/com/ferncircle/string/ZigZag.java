@@ -1,4 +1,4 @@
-package com.ferncircle.sandbox;
+package com.ferncircle.string;
 
 import java.util.HashMap;
 import java.util.Map;

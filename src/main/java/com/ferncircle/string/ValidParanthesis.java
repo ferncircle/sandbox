@@ -1,4 +1,4 @@
-package com.ferncircle.sandbox;
+package com.ferncircle.string;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
