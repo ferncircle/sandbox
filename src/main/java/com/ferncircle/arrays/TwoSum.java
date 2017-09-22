@@ -6,7 +6,27 @@ import java.util.Map;
 
 import org.junit.Assert;
 
-public class ArraySum {
+
+/**
+ * @author dbrit00s
+ * 
+ * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+Example:
+Given nums = [2, 7, 11, 15], target = 9,
+
+Because nums[0] + nums[1] = 2 + 7 = 9,
+return [0, 1].
+
+Best Solution:
+Check in the map if the complimet exists else put.
+Space Complexity O(n)
+Time Complexity O(n)
+ *
+ */
+public class TwoSum {
 
 
 	public int[] twoSum2(int[] nums, int target){
@@ -35,7 +55,7 @@ public class ArraySum {
 
 
 	public static void main(String[] args){
-		ArraySum s1 = new ArraySum();
+		TwoSum s1 = new TwoSum();
 
 		//Testcase 1
 		int[] t1 = {2,4,6,8};		
