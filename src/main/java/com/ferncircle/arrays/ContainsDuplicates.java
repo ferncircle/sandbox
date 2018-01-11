@@ -12,6 +12,8 @@ import junit.framework.Assert;
  *
  *Space Complexity - O(n)
  *Time Complexity - O(n)
+ *
+ *to do this without using extra space refer to FindDuplicateNumbers.java
  */
 public class ContainsDuplicates {
 
