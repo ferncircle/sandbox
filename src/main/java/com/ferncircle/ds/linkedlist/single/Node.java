@@ -2,11 +2,11 @@ package com.ferncircle.ds.linkedlist.single;
 
 public class Node {
 
-	public double data;
-	public Node nextLink;
+	public int data;
+	public Node next;
 
 	//Link constructor
-	public Node(double d) {
+	public Node(int d) {
 		data = d;
 	}
 

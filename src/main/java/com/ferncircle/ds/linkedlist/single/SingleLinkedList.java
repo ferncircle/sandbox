@@ -2,145 +2,150 @@ package com.ferncircle.ds.linkedlist.single;
 
 public class SingleLinkedList {
 
-	private Node first;
-	private Node last;
+	public Node head;
+	public Node tail;
+	public int size;
 
-	//LinkList constructor
 	public SingleLinkedList() {
-		first = null;
-		last = null;
+		head = null;
+		tail = null;
+
 	}
 
 	public boolean isEmpty(){
-		if(first == null && last == null){
+		if(head == null && tail == null){
 			return true;
 		}else{
 			return false;
 		}
+	}
+
+	public void insertTail(int value){
+		size++;
+		Node n = new Node(value);
+		n.next = null;
+		if(head == null){
+			head = n;
+			tail = n;	
+
+		}else{			
+			tail.next = n;
+			tail = n;
+
+		}
+	}
+
+	public void insertHead(int value){
+		size++;
+		Node n = new Node(value);
+		n.next = null;
+		if(head == null){
+			head = n;
+			tail = n;	
+
+		}else{
+			n.next = head;
+			head = n;			
+		}
 	}	
 
-	//Inserts at the Start of the LinkedList
-	public void insertFirst(double data){
+	public SingleLinkedList reverse(){
 
-		Node n = new Node(data);		
-
-		if(first == null && last == null){
-			n.nextLink = null;
-			first = n;
-			last = n;
-		}else{
-			n.nextLink = first;
-			first = n;
+		SingleLinkedList reverse = new SingleLinkedList();
+		Node pointer = head;
+		
+		while(pointer != null){
+			reverse.insertHead(pointer.data);
+			pointer = pointer.next;
 		}
+		return reverse;
+
+	}
+	public Node get(int position){
+
+		if(position > size -1){
+			throw new RuntimeException("Size of the list is smaller than position requested.");
+		}
+		if(position == 0){
+			return head;
+		}
+
+		Node result = head;
+		for(int i=0; i<position; i++){
+			result = result.next;
+		}
+
+
+		return result;
+	}
+
+	public int size(){		
+		return size;
+	}
+
+	public void print(){
+
+		Node n = head;
+		while(n.next!=null){
+			System.out.print(n.data + " , ");
+			n = n.next;
+		}
+		System.out.print(n.data + System.lineSeparator());
+	}
+
+
+	//TODO: BUG 1.0: This method wont delete the last node.
+	public void delete(Node n){
+
+		if(n.next!= null){
+			n.data = n.next.data;
+			n.next = n.next.next;
+		}
+		
+	}
+
+
+
+	public static void main(String[] args) {
+
+		SingleLinkedList sll2 = new SingleLinkedList();
+		sll2.insertTail(1);
+		sll2.insertTail(2);
+		sll2.insertTail(3);
+		sll2.insertTail(4);
+		sll2.insertTail(5);
+		sll2.insertTail(6);
+		System.out.println("After inserting at the tail : ");
+		System.out.println("Size is : " + sll2.size());
+		System.out.println("position 0 : " + sll2.get(0).data);
+		System.out.println("position 1 : " + sll2.get(1).data);
+		System.out.println("position 2 : " + sll2.get(2).data);
+		System.out.println("position 3 : " + sll2.get(3).data);
+		System.out.println("position 4 : " + sll2.get(4).data);
+		System.out.println("position 5 : " + sll2.get(5).data);
+		sll2.print();		
+
+		System.out.println("-------------------------------------");	
+		SingleLinkedList sll3 = new SingleLinkedList();
+		sll3.insertHead(1);
+		sll3.insertHead(2);
+		sll3.insertHead(3);
+		sll3.insertHead(4);
+		System.out.println("After inserting at the head : ");
+		System.out.println("Size is : " + sll3.size());
+		sll3.print();
+
+		System.out.println("---------------------------------");
+		System.out.println("List after reversing");
+		SingleLinkedList reverse = sll3.reverse();
+		reverse.print();
+
+		System.out.println("---------------------------------------------");
+		System.out.println("After delete");
+		sll3.delete(sll3.get(2));
+		sll3.print();
 
 
 	}
 
-	//Insert at the end of the LinkedList
-	public void insertLast(double data){
-
-		Node n = new Node(data);		
-
-		if(first == null && last == null){
-			n.nextLink = null;
-			first = n;
-			last = n;
-		}else{
-			n.nextLink = null;
-			last.nextLink = n;
-			last = n;
-		}
-
-	}
-
-	//Deletes the head node
-	public void deleteFirst(){
-
-		if (first == null && last == null){
-			System.out.println("List is already Empty");
-		}else{
-			first = first.nextLink;
-		}
-		
-		if(first == null){
-			last = null;
-		}
-
-	}	
-
-	//Deletes the tail node
-	public void deleteLast(){
-
-		if (first == null && last == null){
-			System.out.println("List is already Empty");
-		}else if(first.nextLink == null){
-			first = null;
-			last = null;
-			
-		}else{
-			Node current = first;
-			Node previous = null;
-			while(current.nextLink != null){
-				
-				previous = current;
-				current = current.nextLink;
-			}
-			
-			last = previous;
-			last.nextLink = null;
-		}
-
-	}	
-
-	public void get(){
-
-	}
-
-	public void printLink(){
-
-		Node currentLink = first;
-		if(currentLink == null){
-			System.out.println("LIst is empty");
-		}
-		while(currentLink != null){
-			System.out.println(" data: " + currentLink.data);
-			currentLink = currentLink.nextLink;
-		}
-	}
-
-	public static void main(String[] args){
-
-		SingleLinkedList sll = new SingleLinkedList();
-		sll.insertFirst(1.1);
-		sll.insertFirst(2.2);
-		sll.insertFirst(3.3);
-
-		System.out.println("After Inserting from head: ");
-		sll.printLink();
-		
-		while(!sll.isEmpty()){
-			sll.deleteFirst();
-			System.out.println("After Deleting from Head from head: ");
-			sll.printLink();
-		}
-		
-		
-		//*******************************************************************
-		SingleLinkedList sl2 = new SingleLinkedList();
-		sl2.insertLast(1.1);
-		sl2.insertLast(1.2);
-		sl2.insertLast(1.3);
-
-		System.out.println("After Inserting from tail: ");
-		sl2.printLink();
-		
-		while(!sl2.isEmpty()){
-			sl2.deleteLast();
-			System.out.println("After deleting from tail: ");
-			sl2.printLink();
-		}		
-
-		//*******************************************************************		
-		
-	}
 }
