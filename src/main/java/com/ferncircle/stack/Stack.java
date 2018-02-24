@@ -3,6 +3,7 @@ package com.ferncircle.stack;
 public class Stack {
 	
 	public Node top;
+	private int min = Integer.MAX_VALUE;
 	
 	public Stack(){
 		top = null;
@@ -11,13 +12,10 @@ public class Stack {
 	public void push(int data){
 		
 		Node n = new Node(data);
-		if(!isEmpty()){
-			n.next = top;
-			top = n;
-		}else{
-			n.next = null;			
-		}
+		n.next = top;
 		top = n;
+		
+		min = Math.min(data, min);
 	}
 	
 	public Integer pop(){
@@ -29,6 +27,10 @@ public class Stack {
 			
 		}
 		return output;
+	}
+	
+	public int getMin(){
+		return min;
 	}
 	
 	public boolean isEmpty(){
@@ -60,7 +62,9 @@ public class Stack {
 		s.push(3);
 		s.push(4);
 		s.push(5);
+		s.push(1);
 		s.print();
+		System.out.println("Minimum value is : " + s.min);
 		
 		System.out.println(s.pop());
 		System.out.println(s.pop());

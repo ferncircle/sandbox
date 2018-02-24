@@ -54,22 +54,28 @@ public class Palindrome {
 	
 	public boolean isPalindrome2(SingleLinkedList l1){
 		
-		Node fast = l1.head;
-		Node slow = l1.tail;
-		int hops = 0;
 		
-		//Get to the middle of the list
+		Node fast = l1.head;
+		Node slow = l1.head;
+		Node head = l1.head;
+		
 		while(fast.next != null){
-			fast = fast.next.next;
-			slow = slow.next;
-			hops++;
+			fast = fast.next.next;			
 			if(fast == null){
 				break;
 			}
+			slow = slow.next;
 		}
 		
-		
-		
+		Node reverse = l1.reverse(slow.next);
+		while(reverse != null){
+			if(reverse.data != head.data){
+				return false;
+			}
+			
+			reverse = reverse.next;
+			head = head.next;
+		}		
 		
 		return true;
 	}
@@ -121,7 +127,8 @@ public class Palindrome {
 		l1.insertTail(1);
 		l1.insertTail(0);
 		Assert.assertTrue(p.isPalindrome1(l1));
-		Assert.assertTrue(p.isPalindrome3(l1));	
+		Assert.assertTrue(p.isPalindrome2(l1));		
+		//Assert.assertTrue(p.isPalindrome3(l1));	
 		
 		SingleLinkedList l2 = new SingleLinkedList();
 		l2.insertTail(0);
@@ -131,7 +138,8 @@ public class Palindrome {
 		l2.insertTail(2);
 		l2.insertTail(1);
 		Assert.assertFalse(p.isPalindrome1(l2));
-		Assert.assertFalse(p.isPalindrome3(l2));
+		Assert.assertFalse(p.isPalindrome2(l2));
+		//Assert.assertFalse(p.isPalindrome3(l2));
 		
 		SingleLinkedList l3 = new SingleLinkedList();
 		l3.insertTail(0);
@@ -140,8 +148,22 @@ public class Palindrome {
 		l3.insertTail(2);
 		l3.insertTail(1);
 		l3.insertTail(0);
-		Assert.assertTrue(p.isPalindrome3(l3));
-		Assert.assertTrue(p.isPalindrome3(l3));
+		Assert.assertTrue(p.isPalindrome1(l3));
+		Assert.assertTrue(p.isPalindrome2(l3));
+		//Assert.assertTrue(p.isPalindrome3(l3));
+		
+		SingleLinkedList l4 = new SingleLinkedList();
+		l4.insertTail(1);
+		l4.insertTail(1);
+		l4.insertTail(2);
+		l4.insertTail(1);
+		Assert.assertFalse(p.isPalindrome2(l4));
+		
+		SingleLinkedList l5 = new SingleLinkedList();
+		l5.insertTail(1);
+		l5.insertTail(2);
+		
+		Assert.assertFalse(p.isPalindrome2(l5));
 		
 		
 			

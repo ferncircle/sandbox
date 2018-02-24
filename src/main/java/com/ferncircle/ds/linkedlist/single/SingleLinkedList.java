@@ -53,14 +53,31 @@ public class SingleLinkedList {
 
 		SingleLinkedList reverse = new SingleLinkedList();
 		Node pointer = head;
-		
+
 		while(pointer != null){
 			reverse.insertHead(pointer.data);
 			pointer = pointer.next;
 		}
 		return reverse;
 
+	}	
+	
+	public Node reverse(Node n){
+		
+		Node head = null;
+		Node temp = null;
+		Node ptr = n;
+		
+		while(ptr != null){
+			temp = ptr.next;
+			ptr.next =head;
+			head = ptr;
+			ptr = temp;
+		}
+		
+		return head;
 	}
+	
 	public Node get(int position){
 
 		if(position > size -1){
@@ -92,6 +109,16 @@ public class SingleLinkedList {
 		}
 		System.out.print(n.data + System.lineSeparator());
 	}
+	
+	public void print(Node n){
+		Node temp = n;
+		
+		while(temp.next!=null){
+			System.out.print(temp.data + " , ");
+			temp = temp.next;
+		}
+		System.out.print(temp.data + System.lineSeparator());
+	}
 
 
 	//TODO: BUG 1.0: This method wont delete the last node.
@@ -101,7 +128,7 @@ public class SingleLinkedList {
 			n.data = n.next.data;
 			n.next = n.next.next;
 		}
-		
+
 	}
 
 
@@ -144,6 +171,24 @@ public class SingleLinkedList {
 		System.out.println("After delete");
 		sll3.delete(sll3.get(2));
 		sll3.print();
+		
+		System.out.println("Practising inplace reversing the linkedlist: ");
+		SingleLinkedList sll4 = new SingleLinkedList();
+		sll4.insertTail(1);
+		sll4.insertTail(2);
+		sll4.insertTail(3);
+		sll4.insertTail(4);
+		sll4.insertTail(5);
+		sll4.insertTail(6);
+		System.out.println("Before reversing : ");
+		sll4.print();
+		System.out.println("After reversing : ");
+		sll4.head = sll4.reverse(sll4.head);
+		sll4.print();
+		
+		
+		
+		
 
 
 	}
