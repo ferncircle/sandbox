@@ -75,7 +75,7 @@ public class Permutation {
 	public static void main(String[] args){
 		
 		Permutation per = new Permutation();
-		System.out.println(per.permute(new int[]{1,1,1,2,2,2}));
+		System.out.println(per.permute(new int[]{1,1,2}));
 		
 	}
 

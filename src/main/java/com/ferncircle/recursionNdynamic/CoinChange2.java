@@ -74,7 +74,7 @@ public class CoinChange2 {
 	//Memoized Solution
 	Map<Integer, Map<Integer, Integer>> dp = new HashMap(); 
 	int result=0;
-	public int change(int amount, int[] coins) {
+	public int change1(int amount, int[] coins) {
 		if(coins == null)
 			return 0;
 		return helper(amount, coins,0, 0);
@@ -105,6 +105,8 @@ public class CoinChange2 {
 	public static void main(String[] args){
 		CoinChange2 cc = new CoinChange2();
 		System.out.println(cc.change(5, new int[]{1,2,5}));
+		
+		
 	}
 
 
